@@ -1,0 +1,29 @@
+<script src="https://cdn.jsdelivr.net/gh/netizenorg/netnet-standard-library/build/nn.min.js"></script>
+<script src="https://unpkg.com/tone"></script>
+<script>
+/* global nn, Tone*/
+  
+const synth = new Tone.Synth().toDestination()
+
+const flatKeysTreble = ["A", "B", "D", "E"]
+const flatKeysBass = ["A", "B", "D", "E"]
+const firstMeasure = ["E5", "B4", "G4", "E5", "B4", "G4", "E5", "B4"]
+const secondMeasure = [""]
+  
+function play(notes) {
+  const now = Tone.now();
+  for (let i = 0; i < notes.length; i++) {
+    let currNote = notes[i]
+    if (flatKeysTreble.includes(currNote[0])) {
+      currNote = currNote[0] + "b" + currNote[1]
+    }
+    synth.triggerAttackRelease(currNote, "8n", now + 0.3 * i)
+  }
+}
+
+play(firstMeasure)
+
+  
+// nn.on('keydown', play)
+  
+</script>
