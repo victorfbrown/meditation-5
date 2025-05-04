@@ -7,21 +7,65 @@ const synth = new Tone.Synth().toDestination()
 
 const flatKeysTreble = ["A", "B", "D", "E"]
 const flatKeysBass = ["A", "B", "D", "E"]
+
+
+
 const firstMeasure = ["E5", "B4", "G4", "E5", "B4", "G4", "E5", "B4"]
-const secondMeasure = [""]
+const secondMeasure = ["D5", "B4", "F4", "D5", "B4", "F4", "D5", "B4"]
+const thirdMeasure = ["C5", "A4", "F4", "C5", "A4", "F4", "C5", "A4"]
   
 function play(notes) {
   const now = Tone.now();
-  for (let i = 0; i < notes.length; i++) {
-    let currNote = notes[i]
-    if (flatKeysTreble.includes(currNote[0])) {
-      currNote = currNote[0] + "b" + currNote[1]
-    }
-    synth.triggerAttackRelease(currNote, "8n", now + 0.3 * i)
-  }
+  const length = notes.length
+  const eachIntroNote = 0.25
+  // for (let i = 0; i < notes.length; i++) {
+  //   let currNote = notes[i]
+  //   if (flatKeysTreble.includes(currNote[0])) {
+  //     currNote = currNote[0] + "b" + currNote[1]
+  //   }
+  //   synth.triggerAttackRelease(currNote, "8n", now + eachIntroNote * i)
+  // }
+  let offset = now + eachIntroNote * length
+  offset = 0
+  synth.triggerAttackRelease("Eb5", "2n", offset + 0.5)
+  synth.triggerAttackRelease("Eb5", "2n", offset + 1)
+  synth.triggerAttackRelease("Eb5", "2n", offset + 1.5)
+  synth.triggerAttackRelease("Eb5", "8n", offset + 2)
+  synth.triggerAttackRelease("C5", "8n", offset + 2.25)
+  
+  synth.triggerAttackRelease("Db5", "8n", offset + 2.5)
+  synth.triggerAttackRelease("C5", "4n", offset + 3)
+  synth.triggerAttackRelease("Bb4", "2n", offset + 3.25)
+
+  
+  
+  synth.triggerAttackRelease("Db5", "4n", offset + 4.5)
+  synth.triggerAttackRelease("Db5", "4n", offset + 5)
+  synth.triggerAttackRelease("Db5", "4n", offset + 5.5)
+  synth.triggerAttackRelease("Db5", "8n", offset + 5.75)
+  synth.triggerAttackRelease("Bb4", "8n", offset + 6)
+  
+  synth.triggerAttackRelease("C5", "4n", offset + 6.5)
+  synth.triggerAttackRelease("Bb4", "8n", offset + 7)
+  synth.triggerAttackRelease("Ab4", "2n", offset + 7.5)
+  
 }
 
-play(firstMeasure)
+// console.log(firstMeasure.concat(secondMeasure))
+  
+let notes = firstMeasure.concat(secondMeasure, secondMeasure, thirdMeasure)
+
+let intro = notes.concat(notes)
+play(intro)
+  
+// const now = Tone.now()
+// synth.triggerAttackRelease("E5", "8n", now + 0.2)
+// synth.triggerAttackRelease("E5", "8n", now + 0.4)
+// synth.triggerAttackRelease("E5", "8n", now + 0.6)
+// synth.triggerAttackRelease("E5", "8n", now + 0.8)
+  
+// play(thirdMeasure)
+// play(secondMeasure)
 
   
 // nn.on('keydown', play)
