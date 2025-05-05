@@ -28,7 +28,8 @@ function playClocks(notes) {
     synth.triggerAttackRelease(currNote, "8n", now + eachIntroNote * i)
   }
   let offset = now + eachIntroNote * length
-  const finalTime = playSecond(offset-0.4)
+  let finalTime = playSecond(offset-0.4)
+  // finalTime = now-0.5
   playSecond(finalTime+0.5)
 }
   
@@ -39,7 +40,6 @@ function playSecond(offset) {
   synth.triggerAttackRelease("Eb5", "2n", offset + 1.5)
   synth.triggerAttackRelease("Eb5", "8n", offset + 2)
   synth.triggerAttackRelease("C5", "8n", offset + 2.25)
-  
   synth.triggerAttackRelease("Db5", "8n", offset + 2.5)
   synth.triggerAttackRelease("C5", "4n", offset + 3)
   synth.triggerAttackRelease("Bb4", "2n", offset + 3.25)
@@ -50,10 +50,9 @@ function playSecond(offset) {
   synth.triggerAttackRelease("Db5", "4n", offset + 5.5)
   synth.triggerAttackRelease("Db5", "8n", offset + 5.75)
   synth.triggerAttackRelease("Bb4", "8n", offset + 6)
-  
   synth.triggerAttackRelease("C5", "8n", offset + 6.5)
-  synth.triggerAttackRelease("Bb4", "8n", offset + 7)
-  synth.triggerAttackRelease("Ab4", "2n", offset + 7.5)
+  synth.triggerAttackRelease("Bb4", "8n", offset + 6.75)
+  synth.triggerAttackRelease("Ab4", "2n", offset + 7.25)
   return offset+7.5
 }
   
